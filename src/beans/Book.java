@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public class Book {
 
-	private String _id;
-	private String _name;
-	private String _author;
+	private String _bookId;
+	private String _bookName;
+	private String _bookAuthor;
 
 	public Book() {
 
@@ -14,40 +14,38 @@ public class Book {
 
 	public Book(String name, String author) {
 
-		this._id = UUID.randomUUID().toString();;
-		this._name = name;
-		this._author = author;
+		this.set_bookId(UUID.randomUUID().toString());;
+		this.set_bookName(name);
+		this.set_bookAuthor(author);
 	}
 
-	public String getId() {
-
-		return _id;
+	public String get_bookId() {
+		return _bookId;
 	}
 
-	public void setId(String id) {
-
-		this._id = id;
+	public void set_bookId(String _bookId) {
+		this._bookId = _bookId;
 	}
 
-	public String getName() {
-
-		return this._name;
+	public String get_bookName() {
+		return _bookName;
 	}
 
-	public void setName(String name) {
-
-		this._name = name;
+	public void set_bookName(String _bookName) {
+		this._bookName = _bookName;
 	}
 
-	public String getAuthor() {
-
-		return this._author;
+	public String get_bookAuthor() {
+		return _bookAuthor;
 	}
 
-	public void setAuthor(String author) {
-
-		this._author = author;
+	public void set_bookAuthor(String _bookAuthor) {
+		this._bookAuthor = _bookAuthor;
 	}
+
+
+
+
 
 
 }
