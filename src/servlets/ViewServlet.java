@@ -1,3 +1,4 @@
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Book;
+import daos.BookDAO;
 @WebServlet("/ViewServlet")
 public class ViewServlet extends HttpServlet {
 	private static final long _SERIAL_VERSION_UID = 1L;

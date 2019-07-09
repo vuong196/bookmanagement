@@ -1,3 +1,4 @@
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/AddFormServlet")
-public class AddFormServlet extends HttpServlet {
+
+import daos.BookDAO;
+@WebServlet("/DeleteServlet")
+public class DeleteServlet extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
@@ -26,15 +29,24 @@ public class AddFormServlet extends HttpServlet {
 		processRequest(request, response);
 
 		PrintWriter out = response.getWriter();
+		String id = request.getParameter("id");
+		try {
 
-		out.print("<center><h1>Add New Book</h1>");
-		out.print("<form action='AddServlet' method='post'>");
-		out.print("<table>");
-		out.print("<tr><td>Name:</td><td><input type='text' name='name' required/></td></tr>");
-		out.print("<tr><td>Author:</td><td><input type='text' name='author'/></td></tr>");
-		out.print("<tr><td colspan='2'><input type='submit' value='Add Book'/></td></tr>");
-		out.print("</table>");
-		out.print("</form></center>");
+			int status = BookDAO.delete(id);
+
+			if(status > 0) {
+
+				response.sendRedirect("view");
+			}
+			else {
+
+				out.println("Sorry! unable to update this book");
+			}
+		}
+		catch (Exception e) {
+
+			out.println("Sorry! unable to update this book");
+		}
 
 		out.close();
 	}
