@@ -2,6 +2,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 public class BookDAO {
 
 	private static List<Book> bookRepository = new ArrayList<Book>() {
@@ -14,11 +18,23 @@ public class BookDAO {
 		 }
 	};
 
-	 public static int save(Book book) {
+	 public static boolean save(String name, String author) {
 
-		int status = 0;
-		bookRepository.add(book);
-		status = 1;
+		boolean status = true;
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Book book = new Book(name, author);
+		try {
+			session.save(book);
+			transaction.commit();
+		}
+		catch(Exception e)	{
+			transaction.rollback();
+			status = false;
+		}
+		session.close();
+
 		return status;
 	}
 
