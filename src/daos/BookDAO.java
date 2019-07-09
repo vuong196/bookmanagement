@@ -1,3 +1,4 @@
+package daos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import beans.Book;
+import configurations.HibernateUtils;
 public class BookDAO {
 
 	private static List<Book> bookRepository = new ArrayList<Book>() {
