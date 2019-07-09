@@ -1,17 +1,18 @@
-package servlets;
+package servlets.book;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Book;
 import daos.BookDAO;
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/EditServlet")
+public class EditServlet extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
@@ -23,16 +24,22 @@ public class DeleteServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
 		processRequest(request, response);
 
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String author = request.getParameter("author");
+		Book book = new Book();
+		book.setId(id);
+		book.setName(name);
+		book.setAuthor(author);
 		try {
 
-			int status = BookDAO.delete(id);
+			int status = BookDAO.update(book);
 
 			if(status > 0) {
 
@@ -45,9 +52,10 @@ public class DeleteServlet extends HttpServlet {
 		}
 		catch (Exception e) {
 
-			out.println("Sorry! unable to update this book");
+			out.println("Caught error when updating: " + e);
 		}
-
 		out.close();
 	}
+
 }
+

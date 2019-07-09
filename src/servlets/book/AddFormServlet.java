@@ -1,4 +1,4 @@
-package servlets;
+package servlets.book;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,10 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import daos.BookDAO;
-@WebServlet("/AddServlet")
-public class AddServlet extends HttpServlet {
+@WebServlet("/AddFormServlet")
+public class AddFormServlet extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
@@ -23,33 +21,22 @@ public class AddServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
 		processRequest(request, response);
 
 		PrintWriter out = response.getWriter();
 
-		String name = request.getParameter("name");
-		String author = request.getParameter("author");
-		try {
-
-			boolean status = BookDAO.save(name, author);
-			if(status) {
-
-				response.sendRedirect("view");
-			}
-			else {
-
-				out.println("Sorry! unable to add this book");
-			}
-		} catch (Exception e) {
-
-			out.println("Caught error when adding:" + e);
-
-		}
+		out.print("<center><h1>Add New Book</h1>");
+		out.print("<form action='AddServlet' method='post'>");
+		out.print("<table>");
+		out.print("<tr><td>Name:</td><td><input type='text' name='name' required/></td></tr>");
+		out.print("<tr><td>Author:</td><td><input type='text' name='author'/></td></tr>");
+		out.print("<tr><td colspan='2'><input type='submit' value='Add Book'/></td></tr>");
+		out.print("</table>");
+		out.print("</form></center>");
 
 		out.close();
 	}
-
 }
