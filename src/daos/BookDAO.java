@@ -3,6 +3,8 @@ package daos;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.query.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 import beans.Book;
 import configurations.HibernateUtils;
+
 public class BookDAO {
 
 	private static List<Book> bookRepository = new ArrayList<Book>() {
@@ -25,16 +28,20 @@ public class BookDAO {
 	 public static boolean save(String name, String author) {
 
 		boolean status = true;
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		Session session = factory.openSession();
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		Book book = new Book(name, author);
+
 		try {
-			session.save(book);
+			Book newBook = new Book(name, author);
+			session.save(newBook);
 			transaction.commit();
 		}
 		catch(Exception e)	{
-			transaction.rollback();
+
+			e.printStackTrace();
+			// Rollback trong trường hợp có lỗi xẩy ra.
+			session.getTransaction().rollback();
 			status = false;
 		}
 		session.close();
@@ -42,53 +49,96 @@ public class BookDAO {
 		return status;
 	}
 
-	public static int update(Book book) {
+	public static boolean update(String id, String name, String author) {
 
-		int status = 0;
-		for(Book b : bookRepository) {
-
-			if (book.getId().equals(b.getId())) {
-
-				b.setName(book.getName());
-				b.setAuthor(book.getAuthor());
-				status = 1;
-				return status;
-			}
+		boolean status = true;
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		Book book = new Book();
+		book.set_bookId(id);
+		book.set_bookName(name);
+		book.set_bookAuthor(author);
+		try {
+			session.update(book);
+			transaction.commit();
 		}
+		catch(Exception e)	{
+
+			e.printStackTrace();
+			// Rollback trong trường hợp có lỗi xẩy ra.
+			session.getTransaction().rollback();
+			status = false;
+		}
+		session.close();
+
 		return status;
 	}
 
-	public static int delete(String id) {
+	public static boolean delete(String id) {
 
-		int status = 0;
+		boolean status = true;
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		try {
 
-		for (int i = 0; i< bookRepository.size(); i++) {
-
-			if (bookRepository.get(i).getId().equals(id)) {
-
-				bookRepository.remove(i);
-				status = 1;
-				return status;
-			}
+			Book deleteBook = session.get(Book.class, id);
+			session.delete(deleteBook);
+			transaction.commit();
 		}
+		catch(Exception e)	{
+
+			e.printStackTrace();
+			// Rollback trong trường hợp có lỗi xẩy ra.
+			session.getTransaction().rollback();
+			status = false;
+		}
+		session.close();
+
 		return status;
 	}
 
 	public static Book getBookById(String id) {
 
-		for(Book b : bookRepository) {
+		Book book = new Book();
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		try {
 
-			if (b.getId().equals(id)) {
-
-				return b;
-			}
-
+			book = session.get(Book.class, id);
+			transaction.commit();
 		}
-		return null;
+		catch(Exception e)	{
+
+			e.printStackTrace();
+			// Rollback trong trường hợp có lỗi xẩy ra.
+			session.getTransaction().rollback();
+		}
+		session.close();
+
+		return book;
 	}
 
 	public static List<Book> getAllBooks() {
+		List<Book> bookRepository = new ArrayList<Book>();
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			Query<Book> query = session.createQuery("FROM Book");
+			System.out.println(query);
+			bookRepository = (ArrayList<Book>) query.list();
+			transaction.commit();
+			} catch (Exception e) {
 
+				e.printStackTrace();
+				// Rollback trong trường hợp có lỗi xẩy ra.
+				transaction.rollback();
+			}
+
+		session.close();
 		return bookRepository;
 	}
 
