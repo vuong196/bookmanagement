@@ -5,7 +5,7 @@
 <!-- Defines the path to access view Servlet --> 
 	<servlet>
 	   <servlet-name>viewServlet</servlet-name>
-	   <servlet-class>ViewServlet</servlet-class>
+	   <servlet-class>servlets.book.ViewServlet</servlet-class>
 	</servlet>
 	 
 	<servlet-mapping>
@@ -16,7 +16,7 @@
 <!-- Defines the path to access add Servlet --> 
 	<servlet>
 	   <servlet-name>addFormServlet</servlet-name>
-	   <servlet-class>AddFormServlet</servlet-class>
+	   <servlet-class>servlets.book.AddFormServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>addFormServlet</servlet-name>
@@ -25,7 +25,7 @@
 
 	<servlet>
 	   <servlet-name>addServlet</servlet-name>
-	   <servlet-class>AddServlet</servlet-class>
+	   <servlet-class>servlets.book.AddServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -36,7 +36,7 @@
 <!-- Defines the path to access edit Servlet --> 	
 	<servlet>
 	   <servlet-name>editFormServlet</servlet-name>
-	   <servlet-class>EditFormServlet</servlet-class>
+	   <servlet-class>servlets.book.EditFormServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>editFormServlet</servlet-name>
@@ -45,7 +45,7 @@
 
 	<servlet>
 	   <servlet-name>editServlet</servlet-name>
-	   <servlet-class>EditServlet</servlet-class>
+	   <servlet-class>servlets.book.EditServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -55,7 +55,7 @@
 
 	<servlet>
 	   <servlet-name>deleteServlet</servlet-name>
-	   <servlet-class>DeleteServlet</servlet-class>
+	   <servlet-class>servlets.book.DeleteServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>deleteServlet</servlet-name>
