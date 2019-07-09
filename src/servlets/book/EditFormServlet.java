@@ -41,15 +41,15 @@ public class EditFormServlet extends HttpServlet {
 			out.print("<table>");
 			out.print("<tr>"
 					+ "<td>Id:</td>"
-					+ "<td><input type='text' name='id' value='" + book.getId() + "' readonly/></td>"
+					+ "<td><input type='text' name='id' value='" + book.get_bookId() + "' readonly/></td>"
 					+ "</tr>");
 			out.print("<tr>"
 					+ "<td>Name:</td>"
-					+ "<td><input type='text' name='name' value='" + book.getName() + "' required/></td>"
+					+ "<td><input type='text' name='name' value='" + book.get_bookName() + "' required/></td>"
 					+ "</tr>");
 			out.print("<tr>"
 					+ "<td>Author:</td>"
-					+ "<td><input type='text' name='author' value='" + book.getAuthor() + "'/>"
+					+ "<td><input type='text' name='author' value='" + book.get_bookAuthor() + "'/>"
 					+ "</td></tr>");
 			out.print("<tr>"
 					+ "<td colspan='2'><input type='submit' value='Edit &amp; Save '/></td>"

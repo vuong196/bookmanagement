@@ -32,9 +32,9 @@ public class DeleteServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		try {
 
-			int status = BookDAO.delete(id);
+			boolean status = BookDAO.delete(id);
 
-			if(status > 0) {
+			if(status) {
 
 				response.sendRedirect("view");
 			}

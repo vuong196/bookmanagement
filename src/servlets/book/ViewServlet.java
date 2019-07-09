@@ -37,11 +37,11 @@ public class ViewServlet extends HttpServlet {
 			for(Book b:books) {
 
 				out.print("<tr>"
-						+ "<td>"+b.getName()+"</td>"
-						+ "<td>"+b.getAuthor()+"</td>"
+						+ "<td>"+b.get_bookName()+"</td>"
+						+ "<td>"+b.get_bookAuthor()+"</td>"
 						+ "<td><center>"
-						+ "<a href='edit?id="+b.getId()+"'>Edit</a>  "
-						+ "<a href='delete?id="+b.getId()+"'>Delete</a>"
+						+ "<a href='edit?id="+b.get_bookId()+"'>Edit</a>  "
+						+ "<a href='delete?id="+b.get_bookId()+"'>Delete</a>"
 						+ "</center></td>"
 						+ "</tr>");
 			}

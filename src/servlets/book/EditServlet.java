@@ -33,15 +33,11 @@ public class EditServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String author = request.getParameter("author");
-		Book book = new Book();
-		book.setId(id);
-		book.setName(name);
-		book.setAuthor(author);
 		try {
 
-			int status = BookDAO.update(book);
+			boolean status = BookDAO.update(id, name, author);
 
-			if(status > 0) {
+			if(status) {
 
 				response.sendRedirect("view");
 			}
