@@ -30,11 +30,10 @@ public class AddServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String author = request.getParameter("author");
-		Book book = new Book(name, author);
 		try {
 
-			int status = BookDAO.save(book);
-			if(status > 0) {
+			boolean status = BookDAO.save(name, author);
+			if(status) {
 
 				response.sendRedirect("view");
 			}
