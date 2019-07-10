@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Book;
+import daos.AuthorDAO;
 import daos.BookDAO;
-@WebServlet("/ViewServlet")
-public class ViewServlet extends HttpServlet {
+@WebServlet("/ViewBookServlet")
+public class View extends HttpServlet {
 	private static final long _SERIAL_VERSION_UID = 1L;
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -35,10 +36,10 @@ public class ViewServlet extends HttpServlet {
 			out.print("<table border='1' cellpadding='4' width='60%'>"
 					+ "<tr><th>Name</th><th>Author</th><th>Features</th></tr>");
 			for(Book b:books) {
-
+				System.out.println(b.get_bookAuthor().get_authorName());
 				out.print("<tr>"
 						+ "<td>"+b.get_bookName()+"</td>"
-						+ "<td>"+b.get_bookAuthor()+"</td>"
+						+ "<td>"+b.get_bookAuthor().get_authorName()+"</td>"
 						+ "<td><center>"
 						+ "<a href='edit?id="+b.get_bookId()+"'>Edit</a>  "
 						+ "<a href='delete?id="+b.get_bookId()+"'>Delete</a>"
@@ -47,6 +48,7 @@ public class ViewServlet extends HttpServlet {
 			}
 			out.print("</table></center><br/>");
 			out.println("<center><a href='add'> Add Book </a></center>");
+			out.print("<a href='../index.html'>Homepage</a>");
 			out.close();
 		}
 		catch (Exception e) {
