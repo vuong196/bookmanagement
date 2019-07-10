@@ -15,16 +15,6 @@ import configurations.HibernateUtils;
 
 public class BookDAO {
 
-	private static List<Book> bookRepository = new ArrayList<Book>() {
-
-		{
-
-			 add(new Book("The Maze Runner", "James Dashner"));
-			 add(new Book("The Hunger Game", "Suzanne Collins"));
-			 add(new Book("Divergent", "Veronica Roth"));
-		 }
-	};
-
 	 public static boolean save(String name, String author) {
 
 		boolean status = true;
