@@ -24,6 +24,8 @@
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
  
-		<mapping resource="configurations/book.hbm.xml"/>  
+		<mapping class="beans.Author"/> 
+		<mapping class="beans.Book"/> 
+		<mapping class="beans.Category"/> 
 	</session-factory>
 </hibernate-configuration>
