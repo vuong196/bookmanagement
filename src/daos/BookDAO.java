@@ -1,7 +1,9 @@
 package daos;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.query.Query;
 
@@ -11,11 +13,13 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import beans.Book;
+import beans.Category;
+import beans.Author;
 import configurations.HibernateUtils;
 
 public class BookDAO {
 
-	 public static boolean save(String name, String author) {
+	 public static boolean save(String name, String category_id, String author_id) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -23,7 +27,11 @@ public class BookDAO {
 		Transaction transaction = session.beginTransaction();
 
 		try {
-			Book newBook = new Book(name, author);
+			Author author = session.get(Author.class, author_id);
+			Set<Category> categories = new HashSet<Category>();
+			categories.add(session.get(Category.class, category_id));
+
+			Book newBook = new Book(name, categories, author);
 			session.save(newBook);
 			transaction.commit();
 		}
@@ -39,17 +47,24 @@ public class BookDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name, String author) {
+	public static boolean update(String id, String name, String category_id, String author_id) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		Book book = new Book();
-		book.set_bookId(id);
-		book.set_bookName(name);
-		book.set_bookAuthor(author);
+
 		try {
+
+			Author author = session.get(Author.class, author_id);
+			Set<Category> categories = new HashSet<Category>();
+			categories.add(session.get(Category.class, category_id));
+
+			Book book = new Book();
+			book.set_bookName(name);
+			book.set_bookAuthor(author);
+			book.set_bookCategories(categories);
+
 			session.update(book);
 			transaction.commit();
 		}
@@ -117,7 +132,7 @@ public class BookDAO {
 		Session session = factory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			Query<Book> query = session.createQuery("FROM Book");
+			Query<Book> query = session.createQuery("FROM " + Book.class.getName());
 			System.out.println(query);
 			bookRepository = (ArrayList<Book>) query.list();
 			transaction.commit();
