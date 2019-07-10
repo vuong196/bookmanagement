@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Book;
 import daos.BookDAO;
-@WebServlet("/EditServlet")
-public class EditServlet extends HttpServlet {
+@WebServlet("/EditBookServlet")
+public class Edit extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
@@ -33,9 +33,11 @@ public class EditServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String author = request.getParameter("author");
+		String category = request.getParameter("category");
+
 		try {
 
-			boolean status = BookDAO.update(id, name, author);
+			boolean status = BookDAO.update(id, name, category, author);
 
 			if(status) {
 
