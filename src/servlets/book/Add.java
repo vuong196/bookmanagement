@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.BookDAO;
-@WebServlet("/AddServlet")
-public class AddServlet extends HttpServlet {
+@WebServlet("/AddBookServlet")
+public class Add extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
@@ -19,7 +19,6 @@ public class AddServlet extends HttpServlet {
 		throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
-
 	}
 
 	@Override
@@ -31,10 +30,11 @@ public class AddServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String name = request.getParameter("name");
+		String category = request.getParameter("category");
 		String author = request.getParameter("author");
 		try {
 
-			boolean status = BookDAO.save(name, author);
+			boolean status = BookDAO.save(name, category, author);
 			if(status) {
 
 				response.sendRedirect("view");
