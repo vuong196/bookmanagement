@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.BookDAO;
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/DeleteBookServlet")
+public class Delete extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
 
