@@ -1,3 +1,4 @@
+
 package beans;
 
 import java.util.HashSet;
@@ -18,10 +19,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "category", catalog = "bookmanagement")
 public class Category {
 
-	private String _categoryId;
-	private String _categoryName;
-
-	private Set<Book> _books = new HashSet<Book>(0);
+	private Set<Book>	_books	= new HashSet<>(0);
+	private String		_categoryId;
+	private String		_categoryName;
 
 	public Category() {
 
@@ -29,38 +29,44 @@ public class Category {
 	}
 
 	public Category(String categoryName) {
+
 		this.set_categoryId(UUID.randomUUID().toString());
 		this.set_categoryName(categoryName);
 	}
 
-	@Id
-	@GeneratedValue(generator = "uuid")
- 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-  	@Column(name = "category_id", length = 36, unique = true, nullable = false)
-	public String get_categoryId() {
-		return _categoryId;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "_bookCategories")
+	public Set<Book> get_books() {
+
+		return _books;
 	}
 
-	public void set_categoryId(String _categoryId) {
-		this._categoryId = _categoryId;
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "category_id", length = 36, unique = true, nullable = false)
+	public String get_categoryId() {
+
+		return _categoryId;
 	}
 
 	@Column(name = "category_name", length = 50, nullable = false)
 	public String get_categoryName() {
+
 		return _categoryName;
 	}
 
-	public void set_categoryName(String _categoryName) {
-		this._categoryName = _categoryName;
-	}
-
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "_bookCategories")
-	public Set<Book> get_books() {
-		return _books;
-	}
-
 	public void set_books(Set<Book> _books) {
+
 		this._books = _books;
 	}
 
+	public void set_categoryId(String _categoryId) {
+
+		this._categoryId = _categoryId;
+	}
+
+	public void set_categoryName(String _categoryName) {
+
+		this._categoryName = _categoryName;
+	}
 }
