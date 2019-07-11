@@ -1,3 +1,4 @@
+
 package servlets.author;
 
 import java.io.IOException;
@@ -12,15 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Author;
 import daos.AuthorDAO;
+
 @WebServlet("/ViewAuthorServlet")
 public class View extends HttpServlet {
+
 	private static final long _SERIAL_VERSION_UID = 1L;
-
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-
-		response.setContentType("text/html;charset=UTF-8");
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -29,32 +26,27 @@ public class View extends HttpServlet {
 		processRequest(request, response);
 		PrintWriter out = response.getWriter();
 		try {
-
 			List<Author> authors = AuthorDAO.getAllAuthors();
 			out.print("<center><h1> Author List </h1>");
 			out.print("<table border='1' cellpadding='4' width='60%'>"
-					+ "<tr><th>Id</th><th>Name</th><th>Features</th></tr>");
-			for(Author a : authors) {
-
+				+ "<tr><th>Id</th><th>Name</th><th>Features</th></tr>");
+			for (Author a : authors) {
 				out.print("<tr>"
-						+ "<td>"+a.get_authorId()+"</td>"
-						+ "<td>"+a.get_authorName()+"</td>"
-						+ "<td><center>"
-						+ "<a href='edit?id="+a.get_authorId()+"'>Edit</a>  "
-						+ "<a href='delete?id="+a.get_authorId()+"'>Delete</a>"
-						+ "</center></td>"
-						+ "</tr>");
+					+ "<td>" + a.get_authorId() + "</td>"
+					+ "<td>" + a.get_authorName() + "</td>"
+					+ "<td><center>"
+					+ "<a href='edit?id=" + a.get_authorId() + "'>Edit</a>  "
+					+ "<a href='delete?id=" + a.get_authorId() + "'>Delete</a>"
+					+ "</center></td>"
+					+ "</tr>");
 			}
 			out.print("</table></center><br/>");
 			out.println("<center><a href='add'> Add New Author </a></center>");
 			out.print("<a href='../index.html'>Homepage</a>");
 			out.close();
-		}
-		catch (Exception e) {
-
+		} catch (Exception e) {
 			out.println("Caught error: " + e);
 		}
-
 	}
 
 	@Override
@@ -63,7 +55,10 @@ public class View extends HttpServlet {
 
 		processRequest(request, response);
 	}
+
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+	}
 }
-
-
-

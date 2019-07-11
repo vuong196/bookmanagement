@@ -1,55 +1,46 @@
+
 package servlets.author;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Author;
 import daos.AuthorDAO;
+
 @WebServlet("/EditAuthorServlet")
 public class Edit extends HttpServlet {
 
 	private static final long _SERIAL_VERSION_UID = 1L;
-
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-
-		response.setContentType("text/html;charset=UTF-8");
-	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 
 		processRequest(request, response);
-
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		try {
-
 			boolean status = AuthorDAO.update(id, name);
-
-			if(status) {
-
+			if (status) {
 				response.sendRedirect("view");
-			}
-			else {
-
+			} else {
 				out.println("Sorry! unable to update this author");
 			}
-		}
-		catch (Exception e) {
-
+		} catch (Exception e) {
 			out.println("Caught error when updating: " + e);
 		}
 		out.close();
 	}
 
-}
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
 
+		response.setContentType("text/html;charset=UTF-8");
+	}
+}
