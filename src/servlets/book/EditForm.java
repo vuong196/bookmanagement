@@ -60,7 +60,7 @@ public class EditForm extends HttpServlet {
 			}
 			out.print("</select></td></tr>");
 
-			out.print("<tr><td>Author:</td><td><select name='author'>");
+			out.print("<tr><td>Author:</td><td><select name='author' selected='"+book.get_bookAuthor().get_authorId()+"'>");
 			for(Author a : authors) {
 				out.print("<option value ='"+ a.get_authorId()+ "'>"+ a.get_authorName()+ "</option>");
 			}
