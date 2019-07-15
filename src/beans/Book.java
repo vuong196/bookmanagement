@@ -23,9 +23,23 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "book", catalog = "bookmanagement")
 public class Book {
 
-	private Author	_bookAuthor;
-	private Set<Category>	_bookCategorySet	= new HashSet<>(0);
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "book_id", length = 36, unique = true, nullable = false)
 	private String	_bookId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "author_id", nullable = false)
+	private Author	_bookAuthor;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "book_category", catalog = "bookmanagement", joinColumns = {
+		@JoinColumn(name = "book_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "category_id", nullable = false, updatable = false) })
+	private Set<Category>	_bookCategorySet	= new HashSet<>(0);
+	
+	@Column(name = "book_name", length = 50, nullable = false)
 	private String	_bookName;
 
 	public Book() {
@@ -40,32 +54,22 @@ public class Book {
 		this.setBookName(name);
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "author_id", nullable = false)
+
 	public Author getBookAuthor() {
 
 		return _bookAuthor;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "book_category", catalog = "bookmanagement", joinColumns = {
-		@JoinColumn(name = "book_id", nullable = false, updatable = false) }, inverseJoinColumns = {
-			@JoinColumn(name = "category_id", nullable = false, updatable = false) })
 	public Set<Category> getBookCategorySet() {
 
 		return _bookCategorySet;
 	}
 
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "book_id", length = 36, unique = true, nullable = false)
 	public String getBookId() {
 
 		return _bookId;
 	}
 
-	@Column(name = "book_name", length = 50, nullable = false)
 	public String getBookName() {
 
 		return _bookName;

@@ -18,10 +18,18 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity(name = "beans.Author")
 @Table(name = "author", catalog = "bookmanagement")
 public class Author {
-
-	private Set<Book>	_authorBookSet	= new HashSet<>(0);
+	
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "author_id", length = 36, unique = true, nullable = false)
 	private String	_authorId;
+	
+	@Column(name = "author_name", length = 50, nullable = false)
 	private String	_authorName;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_bookAuthor")
+	private Set<Book>	_authorBookSet	= new HashSet<>(0);
 
 	public Author() {
 
@@ -38,26 +46,21 @@ public class Author {
 
 		this.setAuthorId(UUID.randomUUID().toString());
 		this.setAuthorName(authorName);
-		this.setBooks(bookSet);
+		this.setAuthorBookSet(bookSet);
 	}
 
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "author_id", length = 36, unique = true, nullable = false)
 	public String getAuthorId() {
 
 		return _authorId;
 	}
 
-	@Column(name = "author_name", length = 50, nullable = false)
 	public String getAuthorName() {
 
 		return _authorName;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_bookAuthor")
-	public Set<Book> getBooks() {
+
+	public Set<Book> getAuthorBookSet() {
 
 		return _authorBookSet;
 	}
@@ -72,7 +75,7 @@ public class Author {
 		this._authorName = authorName;
 	}
 
-	public void setBooks(Set<Book> bookSet) {
+	public void setAuthorBookSet(Set<Book> bookSet) {
 
 		this._authorBookSet = bookSet;
 	}
