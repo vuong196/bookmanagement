@@ -14,7 +14,7 @@ import configurations.HibernateUtils;
 
 public class CategoryDAO {
 
-	public static boolean delete(String id) {
+	public static boolean delete(String id) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -34,7 +34,7 @@ public class CategoryDAO {
 		return status;
 	}
 
-	public static List<Category> getAllCategories() {
+	public static List<Category> getAllCategories() throws Exception {
 
 		List<Category> categoryRepository = new ArrayList<>();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -54,7 +54,7 @@ public class CategoryDAO {
 		return categoryRepository;
 	}
 
-	public static Category getCategoryById(String id) {
+	public static Category getCategoryById(String id) throws Exception {
 
 		Category category = new Category();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -72,7 +72,7 @@ public class CategoryDAO {
 		return category;
 	}
 
-	public static boolean save(String name) {
+	public static boolean save(String name) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -93,7 +93,7 @@ public class CategoryDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name) {
+	public static boolean update(String id, String name) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();

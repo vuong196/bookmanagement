@@ -18,7 +18,7 @@ import configurations.HibernateUtils;
 
 public class BookDAO {
 
-	public static boolean delete(String id) {
+	public static boolean delete(String id) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -38,7 +38,7 @@ public class BookDAO {
 		return status;
 	}
 
-	public static List<Book> getAllBooks() {
+	public static List<Book> getAllBooks() throws Exception {
 
 		List<Book> bookRepository = new ArrayList<>();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -58,7 +58,7 @@ public class BookDAO {
 		return bookRepository;
 	}
 
-	public static Book getBookById(String id) {
+	public static Book getBookById(String id) throws Exception {
 
 		Book book = new Book();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -76,7 +76,7 @@ public class BookDAO {
 		return book;
 	}
 
-	public static boolean save(String name, String category_id, String author_id) {
+	public static boolean save(String name, String category_id, String author_id) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -99,7 +99,7 @@ public class BookDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name, String category_id, String author_id) {
+	public static boolean update(String id, String name, String category_id, String author_id) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();

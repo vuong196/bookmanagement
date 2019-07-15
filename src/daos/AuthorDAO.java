@@ -14,7 +14,7 @@ import configurations.HibernateUtils;
 
 public class AuthorDAO {
 
-	public static boolean delete(String id) {
+	public static boolean delete(String id) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -34,7 +34,7 @@ public class AuthorDAO {
 		return status;
 	}
 
-	public static List<Author> getAllAuthors() {
+	public static List<Author> getAllAuthors() throws Exception {
 
 		List<Author> authorRepository = new ArrayList<>();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -54,7 +54,7 @@ public class AuthorDAO {
 		return authorRepository;
 	}
 
-	public static Author getAuthorById(String author_id) {
+	public static Author getAuthorById(String author_id) throws Exception {
 
 		Author author = new Author();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -72,7 +72,7 @@ public class AuthorDAO {
 		return author;
 	}
 
-	public static boolean save(String name) {
+	public static boolean save(String name) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -92,7 +92,7 @@ public class AuthorDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name) {
+	public static boolean update(String id, String name) throws Exception {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
