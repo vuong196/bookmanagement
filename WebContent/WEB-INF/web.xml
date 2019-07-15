@@ -6,7 +6,7 @@
 <!-- Defines the path to access view Servlet --> 
 	<servlet>
 	   <servlet-name>viewBookServlet</servlet-name>
-	   <servlet-class>servlets.book.View</servlet-class>
+	   <jsp-file>/pages/book/book-view.jsp</jsp-file>
 	</servlet>
 	 
 	<servlet-mapping>
@@ -17,7 +17,7 @@
 <!-- Defines the path to access add Servlet --> 
 	<servlet>
 	   <servlet-name>addBookFormServlet</servlet-name>
-	   <servlet-class>servlets.book.AddForm</servlet-class>
+	   <jsp-file>/pages/book/book-add.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>addBookFormServlet</servlet-name>
@@ -37,7 +37,7 @@
 <!-- Defines the path to access edit Servlet --> 	
 	<servlet>
 	   <servlet-name>editBookFormServlet</servlet-name>
-	   <servlet-class>servlets.book.EditForm</servlet-class>
+	   <jsp-file>/pages/book/book-edit.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>editBookFormServlet</servlet-name>
@@ -67,7 +67,7 @@
 <!-- Defines the path to access view Servlet --> 
 	<servlet>
 	   <servlet-name>viewCategoryServlet</servlet-name>
-	   <servlet-class>servlets.category.View</servlet-class>
+	   <jsp-file>/pages/category/category-view.jsp</jsp-file>
 	</servlet>
 	 
 	<servlet-mapping>
@@ -78,7 +78,7 @@
 <!-- Defines the path to access add Servlet --> 
 	<servlet>
 	   <servlet-name>addCategoryFormServlet</servlet-name>
-	   <servlet-class>servlets.category.AddForm</servlet-class>
+	   <jsp-file>/pages/category/category-add.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>addCategoryFormServlet</servlet-name>
@@ -98,7 +98,7 @@
 <!-- Defines the path to access edit Servlet --> 	
 	<servlet>
 	   <servlet-name>editCategoryFormServlet</servlet-name>
-	   <servlet-class>servlets.category.EditForm</servlet-class>
+	   <jsp-file>/pages/category/category-edit.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>editCategoryFormServlet</servlet-name>
@@ -128,7 +128,7 @@
 <!-- Defines the path to access view Servlet --> 
 	<servlet>
 	   <servlet-name>viewAuthorServlet</servlet-name>
-	   <servlet-class>servlets.author.View</servlet-class>
+	   <jsp-file>/pages/author/author-view.jsp</jsp-file>
 	</servlet>
 	 
 	<servlet-mapping>
@@ -139,7 +139,7 @@
 <!-- Defines the path to access add Servlet --> 
 	<servlet>
 	   <servlet-name>addAuthorFormServlet</servlet-name>
-	   <servlet-class>servlets.author.AddForm</servlet-class>
+	   <jsp-file>/pages/author/author-add.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>addAuthorFormServlet</servlet-name>
@@ -159,7 +159,7 @@
 <!-- Defines the path to access edit Servlet --> 	
 	<servlet>
 	   <servlet-name>editAuthorFormServlet</servlet-name>
-	   <servlet-class>servlets.author.EditForm</servlet-class>
+	   <jsp-file>/pages/author/author-edit.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	   <servlet-name>editAuthorFormServlet</servlet-name>
