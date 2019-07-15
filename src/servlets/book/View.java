@@ -47,7 +47,8 @@ public class View extends HttpServlet {
 			out.println("<center><a href='add'> Add Book </a></center>");
 			out.print("<a href='../index.html'>Homepage</a>");
 			out.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error: " + e);
 		}
 	}

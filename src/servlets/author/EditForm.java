@@ -43,7 +43,8 @@ public class EditForm extends HttpServlet {
 				+ "</tr>");
 			out.print("</table>");
 			out.print("</form>");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error: " + e);
 		}
 		out.close();

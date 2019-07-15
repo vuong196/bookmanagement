@@ -29,10 +29,12 @@ public class Edit extends HttpServlet {
 			boolean status = AuthorDAO.update(id, name);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to update this author");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error when updating: " + e);
 		}
 		out.close();

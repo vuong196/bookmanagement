@@ -24,7 +24,8 @@ public class AuthorDAO {
 			Author deleteAuthor = session.get(Author.class, id);
 			session.delete(deleteAuthor);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -45,7 +46,8 @@ public class AuthorDAO {
 			System.out.println(query);
 			authorRepository = query.list();
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			transaction.rollback();
@@ -63,7 +65,8 @@ public class AuthorDAO {
 		try {
 			author = session.get(Author.class, author_id);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -82,7 +85,8 @@ public class AuthorDAO {
 			Author newAuthor = new Author(name);
 			session.save(newAuthor);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -104,7 +108,8 @@ public class AuthorDAO {
 		try {
 			session.update(Author);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();

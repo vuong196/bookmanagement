@@ -105,7 +105,8 @@ public class CategoryDAO {
 		try {
 			session.update(category);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();

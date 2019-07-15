@@ -27,10 +27,12 @@ public class Add extends HttpServlet {
 			boolean status = BookDAO.save(name, category, author);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to add this book");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error when adding:" + e);
 		}
 		out.close();

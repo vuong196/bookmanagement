@@ -26,10 +26,12 @@ public class Edit extends HttpServlet {
 			boolean status = CategoryDAO.update(id, name);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to update this category");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error when updating: " + e);
 		}
 		out.close();

@@ -28,7 +28,8 @@ public class BookDAO {
 			Book deleteBook = session.get(Book.class, id);
 			session.delete(deleteBook);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -49,7 +50,8 @@ public class BookDAO {
 			System.out.println(query);
 			bookRepository = query.list();
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			transaction.rollback();
@@ -67,7 +69,8 @@ public class BookDAO {
 		try {
 			book = session.get(Book.class, id);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -89,7 +92,8 @@ public class BookDAO {
 			Book newBook = new Book(name, categories, author);
 			session.save(newBook);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -115,7 +119,8 @@ public class BookDAO {
 			book.setBookCategorySet(categories);
 			session.update(book);
 			transaction.commit();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();

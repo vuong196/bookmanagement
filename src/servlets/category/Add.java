@@ -25,10 +25,12 @@ public class Add extends HttpServlet {
 			boolean status = CategoryDAO.save(name);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to add this category");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Caught error when adding:" + e);
 		}
 		out.close();

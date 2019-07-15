@@ -28,10 +28,12 @@ public class Delete extends HttpServlet {
 			boolean status = AuthorDAO.delete(id);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to delete this author");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Sorry! unable to delete this author");
 		}
 		out.close();

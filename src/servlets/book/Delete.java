@@ -25,10 +25,12 @@ public class Delete extends HttpServlet {
 			boolean status = BookDAO.delete(id);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to update this book");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Sorry! unable to update this book");
 		}
 		out.close();

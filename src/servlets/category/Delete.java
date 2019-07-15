@@ -25,10 +25,12 @@ public class Delete extends HttpServlet {
 			boolean status = CategoryDAO.delete(id);
 			if (status) {
 				response.sendRedirect("view");
-			} else {
+			}
+			else {
 				out.println("Sorry! unable to update this category");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			out.println("Sorry! unable to update this category");
 		}
 		out.close();
