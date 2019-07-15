@@ -32,12 +32,12 @@ public class AddForm extends HttpServlet {
 		out.print("<tr><td>Name:</td><td><input type='text' name='name' required/></td></tr>");
 		out.print("<tr><td>Category:</td><td><select name='category'>");
 		for (Category c : categories) {
-			out.print("<option value ='" + c.get_categoryId() + "'>" + c.get_categoryName() + "</option>");
+			out.print("<option value ='" + c.getCategoryId() + "'>" + c.getCategoryName() + "</option>");
 		}
 		out.print("</select></td></tr>");
 		out.print("<tr><td>Author:</td><td><select name='author'>");
 		for (Author a : authors) {
-			out.print("<option value ='" + a.get_authorId() + "'>" + a.get_authorName() + "</option>");
+			out.print("<option value ='" + a.getAuthorId() + "'>" + a.getAuthorName() + "</option>");
 		}
 		out.print("</select></td></tr>");
 		out.print("<tr><td colspan='2'><input type='submit' value='Add Book'/></td></tr>");

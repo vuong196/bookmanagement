@@ -99,8 +99,8 @@ public class AuthorDAO {
 		Session session = factory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Author Author = new Author();
-		Author.set_authorId(id);
-		Author.set_authorName(name);
+		Author.setAuthorId(id);
+		Author.setAuthorName(name);
 		try {
 			session.update(Author);
 			transaction.commit();

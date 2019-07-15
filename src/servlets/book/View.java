@@ -29,17 +29,17 @@ public class View extends HttpServlet {
 			out.print("<table border='1' cellpadding='4' width='60%'>"
 				+ "<tr><th>Name</th><th>Author</th><th>Categories</th><th>Actions</th></tr>");
 			for (Book b : books) {
-				System.out.println(b.get_bookAuthor().get_authorName());
+				System.out.println(b.getBookAuthor().getAuthorName());
 				out.print("<tr>"
-					+ "<td>" + b.get_bookName() + "</td>"
-					+ "<td>" + b.get_bookAuthor().get_authorName() + "</td>"
+					+ "<td>" + b.getBookName() + "</td>"
+					+ "<td>" + b.getBookAuthor().getAuthorName() + "</td>"
 					+ "<td><center>");
-				for (Category c : b.get_bookCategories()) {
-					out.print("<label>" + c.get_categoryName() + "</label>");
+				for (Category c : b.getBookCategorySet()) {
+					out.print("<label>" + c.getCategoryName() + "</label>");
 				} ;
 				out.print("<td><center>"
-					+ "<a href='edit?id=" + b.get_bookId() + "'>Edit</a>  "
-					+ "<a href='delete?id=" + b.get_bookId() + "'>Delete</a>"
+					+ "<a href='edit?id=" + b.getBookId() + "'>Edit</a>  "
+					+ "<a href='delete?id=" + b.getBookId() + "'>Delete</a>"
 					+ "</center></td>"
 					+ "</tr>");
 			}

@@ -32,11 +32,11 @@ public class View extends HttpServlet {
 				+ "<tr><th>Id</th><th>Name</th><th>Features</th></tr>");
 			for (Author a : authors) {
 				out.print("<tr>"
-					+ "<td>" + a.get_authorId() + "</td>"
-					+ "<td>" + a.get_authorName() + "</td>"
+					+ "<td>" + a.getAuthorId() + "</td>"
+					+ "<td>" + a.getAuthorName() + "</td>"
 					+ "<td><center>"
-					+ "<a href='edit?id=" + a.get_authorId() + "'>Edit</a>  "
-					+ "<a href='delete?id=" + a.get_authorId() + "'>Delete</a>"
+					+ "<a href='edit?id=" + a.getAuthorId() + "'>Edit</a>  "
+					+ "<a href='delete?id=" + a.getAuthorId() + "'>Delete</a>"
 					+ "</center></td>"
 					+ "</tr>");
 			}

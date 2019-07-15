@@ -100,8 +100,8 @@ public class CategoryDAO {
 		Session session = factory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Category category = new Category();
-		category.set_categoryId(id);
-		category.set_categoryName(name);
+		category.setCategoryId(id);
+		category.setCategoryName(name);
 		try {
 			session.update(category);
 			transaction.commit();

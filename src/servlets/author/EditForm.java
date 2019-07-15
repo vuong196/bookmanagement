@@ -32,11 +32,11 @@ public class EditForm extends HttpServlet {
 			out.print("<table>");
 			out.print("<tr>"
 				+ "<td>Id:</td>"
-				+ "<td><input type='text' name='id' value='" + a.get_authorId() + "' readonly/></td>"
+				+ "<td><input type='text' name='id' value='" + a.getAuthorId() + "' readonly/></td>"
 				+ "</tr>");
 			out.print("<tr>"
 				+ "<td>Name:</td>"
-				+ "<td><input type='text' name='name' value='" + a.get_authorName() + "' required/></td>"
+				+ "<td><input type='text' name='name' value='" + a.getAuthorName() + "' required/></td>"
 				+ "</tr>");
 			out.print("<tr>"
 				+ "<td colspan='2'><input type='submit' value='Edit &amp; Save '/></td>"

@@ -29,11 +29,11 @@ public class View extends HttpServlet {
 				+ "<tr><th>Id</th><th>Name</th><th>Features</th></tr>");
 			for (Category c : categories) {
 				out.print("<tr>"
-					+ "<td>" + c.get_categoryId() + "</td>"
-					+ "<td>" + c.get_categoryName() + "</td>"
+					+ "<td>" + c.getCategoryId() + "</td>"
+					+ "<td>" + c.getCategoryName() + "</td>"
 					+ "<td><center>"
-					+ "<a href='edit?id=" + c.get_categoryId() + "'>Edit</a>  "
-					+ "<a href='delete?id=" + c.get_categoryId() + "'>Delete</a>"
+					+ "<a href='edit?id=" + c.getCategoryId() + "'>Edit</a>  "
+					+ "<a href='delete?id=" + c.getCategoryId() + "'>Delete</a>"
 					+ "</center></td>"
 					+ "</tr>");
 			}

@@ -110,9 +110,9 @@ public class BookDAO {
 			Set<Category> categories = new HashSet<>();
 			categories.add(session.get(Category.class, category_id));
 			Book book = session.get(Book.class, id);
-			book.set_bookName(name);
-			book.set_bookAuthor(author);
-			book.set_bookCategories(categories);
+			book.setBookName(name);
+			book.setBookAuthor(author);
+			book.setBookCategorySet(categories);
 			session.update(book);
 			transaction.commit();
 		} catch (Exception e) {

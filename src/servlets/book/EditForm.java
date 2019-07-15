@@ -36,21 +36,21 @@ public class EditForm extends HttpServlet {
 			out.print("<table>");
 			out.print("<tr>"
 				+ "<td>Id:</td>"
-				+ "<td><input type='text' name='id' value='" + book.get_bookId() + "' readonly/></td>"
+				+ "<td><input type='text' name='id' value='" + book.getBookId() + "' readonly/></td>"
 				+ "</tr>");
 			out.print("<tr>"
 				+ "<td>Name:</td>"
-				+ "<td><input type='text' name='name' value='" + book.get_bookName() + "' required/></td>"
+				+ "<td><input type='text' name='name' value='" + book.getBookName() + "' required/></td>"
 				+ "</tr>");
 			out.print("<tr><td>Category:</td><td><select name='category'>");
 			for (Category c : categories) {
-				out.print("<option value ='" + c.get_categoryId() + "'>" + c.get_categoryName() + "</option>");
+				out.print("<option value ='" + c.getCategoryId() + "'>" + c.getCategoryName() + "</option>");
 			}
 			out.print("</select></td></tr>");
-			out.print("<tr><td>Author:</td><td><select name='author' selected='" + book.get_bookAuthor().get_authorId()
+			out.print("<tr><td>Author:</td><td><select name='author' selected='" + book.getBookAuthor().getAuthorId()
 				+ "'>");
 			for (Author a : authors) {
-				out.print("<option value ='" + a.get_authorId() + "'>" + a.get_authorName() + "</option>");
+				out.print("<option value ='" + a.getAuthorId() + "'>" + a.getAuthorName() + "</option>");
 			}
 			out.print("</select></td></tr>");
 			out.print("<tr>"
