@@ -23,10 +23,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "book", catalog = "bookmanagement")
 public class Book {
 
-	private Author			_bookAuthor;
-	private Set<Category>	_bookCategories	= new HashSet<>(0);
-	private String			_bookId;
-	private String			_bookName;
+	private Author	_bookAuthor;
+	private Set<Category>	_bookCategorySet	= new HashSet<>(0);
+	private String	_bookId;
+	private String	_bookName;
 
 	public Book() {
 
@@ -34,62 +34,60 @@ public class Book {
 
 	public Book(String name, Set<Category> categories, Author author) {
 
-		this.set_bookId(UUID.randomUUID().toString());
-		this.set_bookName(name);
-		this.set_bookCategories(categories);
-		this.set_bookAuthor(author);
+		this.setBookId(UUID.randomUUID().toString());
+		this.setBookAuthor(author);
+		this.setBookCategorySet(categories);
+		this.setBookName(name);
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "author_id", nullable = false)
-	public Author get_bookAuthor() {
+	public Author getBookAuthor() {
 
 		return _bookAuthor;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "book_category", catalog = "bookmanagement", joinColumns = {
-		@JoinColumn(name = "book_id", nullable = false, updatable = false) },
-		inverseJoinColumns = {
-			@JoinColumn(name = "category_id",
-				nullable = false, updatable = false) })
-	public Set<Category> get_bookCategories() {
+		@JoinColumn(name = "book_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "category_id", nullable = false, updatable = false) })
+	public Set<Category> getBookCategorySet() {
 
-		return _bookCategories;
+		return _bookCategorySet;
 	}
 
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "book_id", length = 36, unique = true, nullable = false)
-	public String get_bookId() {
+	public String getBookId() {
 
 		return _bookId;
 	}
 
 	@Column(name = "book_name", length = 50, nullable = false)
-	public String get_bookName() {
+	public String getBookName() {
 
 		return _bookName;
 	}
 
-	public void set_bookAuthor(Author _bookAuthor) {
+	public void setBookAuthor(Author bookAuthor) {
 
-		this._bookAuthor = _bookAuthor;
+		this._bookAuthor = bookAuthor;
 	}
 
-	public void set_bookCategories(Set<Category> _bookCategories) {
+	public void setBookCategorySet(Set<Category> bookCategorySet) {
 
-		this._bookCategories = _bookCategories;
+		this._bookCategorySet = bookCategorySet;
 	}
 
-	public void set_bookId(String _bookId) {
+	public void setBookId(String bookId) {
 
-		this._bookId = _bookId;
+		this._bookId = bookId;
 	}
 
-	public void set_bookName(String _bookName) {
+	public void setBookName(String bookName) {
 
-		this._bookName = _bookName;
+		this._bookName = bookName;
 	}
 }

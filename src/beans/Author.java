@@ -19,61 +19,61 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "author", catalog = "bookmanagement")
 public class Author {
 
-	private String		_authorId;
-	private String		_authorName;
-	private Set<Book>	_books	= new HashSet<>(0);
+	private Set<Book>	_authorBookSet	= new HashSet<>(0);
+	private String	_authorId;
+	private String	_authorName;
 
 	public Author() {
 
-		this.set_authorId(UUID.randomUUID().toString());
+		this.setAuthorId(UUID.randomUUID().toString());
 	}
 
 	public Author(String authorName) {
 
-		this.set_authorId(UUID.randomUUID().toString());
-		this.set_authorName(authorName);
+		this.setAuthorId(UUID.randomUUID().toString());
+		this.setAuthorName(authorName);
 	}
 
-	public Author(String authorName, Set<Book> books) {
+	public Author(String authorName, Set<Book> bookSet) {
 
-		this.set_authorId(UUID.randomUUID().toString());
-		this.set_authorName(authorName);
-		this.set_books(books);
+		this.setAuthorId(UUID.randomUUID().toString());
+		this.setAuthorName(authorName);
+		this.setBooks(bookSet);
 	}
 
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "author_id", length = 36, unique = true, nullable = false)
-	public String get_authorId() {
+	public String getAuthorId() {
 
 		return _authorId;
 	}
 
 	@Column(name = "author_name", length = 50, nullable = false)
-	public String get_authorName() {
+	public String getAuthorName() {
 
 		return _authorName;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_bookAuthor")
-	public Set<Book> get_books() {
+	public Set<Book> getBooks() {
 
-		return _books;
+		return _authorBookSet;
 	}
 
-	public void set_authorId(String _authorId) {
+	public void setAuthorId(String authorId) {
 
-		this._authorId = _authorId;
+		this._authorId = authorId;
 	}
 
-	public void set_authorName(String _authorName) {
+	public void setAuthorName(String authorName) {
 
-		this._authorName = _authorName;
+		this._authorName = authorName;
 	}
 
-	public void set_books(Set<Book> _books) {
+	public void setBooks(Set<Book> bookSet) {
 
-		this._books = _books;
+		this._authorBookSet = bookSet;
 	}
 }
