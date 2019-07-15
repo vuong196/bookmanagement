@@ -12,7 +12,7 @@ import daos.CategoryDAO;
 @WebServlet("/AddCategoryBookServlet")
 public class Add extends HttpServlet {
 
-	private static final long _SERIAL_VERSION_UID = 1L;
+	private static final long _SERIAL_VERSION_UID = 2L;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

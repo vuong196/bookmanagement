@@ -13,7 +13,7 @@ import daos.CategoryDAO;;
 @WebServlet("/EditCategoryFormServlet")
 public class EditForm extends HttpServlet {
 
-	private static final long _SERIAL_VERSION_UID = 1L;
+	private static final long _SERIAL_VERSION_UID = 2L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

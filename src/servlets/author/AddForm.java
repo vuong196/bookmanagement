@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AddAuthorFormServlet")
 public class AddForm extends HttpServlet {
 
-	private static final long _SERIAL_VERSION_UID = 1L;
+	private static final long _SERIAL_VERSION_UID = 2L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -15,7 +15,7 @@ import daos.AuthorDAO;
 @WebServlet("/DeleteAuthorServlet")
 public class Delete extends HttpServlet {
 
-	private static final long _SERIAL_VERSION_UID = 1L;
+	private static final long _SERIAL_VERSION_UID = 2L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
