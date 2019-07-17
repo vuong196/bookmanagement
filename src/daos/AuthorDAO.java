@@ -3,18 +3,15 @@ package daos;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
 import beans.Author;
 import configurations.HibernateUtils;
-
 public class AuthorDAO {
 
-	public static boolean delete(String id) throws Exception {
+	public static boolean delete(String id) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -24,8 +21,7 @@ public class AuthorDAO {
 			Author deleteAuthor = session.get(Author.class, id);
 			session.delete(deleteAuthor);
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -35,7 +31,7 @@ public class AuthorDAO {
 		return status;
 	}
 
-	public static List<Author> getAllAuthors() throws Exception {
+	public static List<Author> getAllAuthors() {
 
 		List<Author> authorRepository = new ArrayList<>();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -46,8 +42,7 @@ public class AuthorDAO {
 			System.out.println(query);
 			authorRepository = query.list();
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			transaction.rollback();
@@ -56,7 +51,7 @@ public class AuthorDAO {
 		return authorRepository;
 	}
 
-	public static Author getAuthorById(String author_id) throws Exception {
+	public static Author getAuthorById(String author_id) {
 
 		Author author = new Author();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -65,8 +60,7 @@ public class AuthorDAO {
 		try {
 			author = session.get(Author.class, author_id);
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -75,7 +69,7 @@ public class AuthorDAO {
 		return author;
 	}
 
-	public static boolean save(String name) throws Exception {
+	public static boolean save(String name) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -85,8 +79,7 @@ public class AuthorDAO {
 			Author newAuthor = new Author(name);
 			session.save(newAuthor);
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
@@ -96,7 +89,7 @@ public class AuthorDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name) throws Exception {
+	public static boolean update(String id, String name) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -108,8 +101,7 @@ public class AuthorDAO {
 		try {
 			session.update(Author);
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();

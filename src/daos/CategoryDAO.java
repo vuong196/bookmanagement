@@ -3,18 +3,15 @@ package daos;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
 import beans.Category;
 import configurations.HibernateUtils;
-
 public class CategoryDAO {
 
-	public static boolean delete(String id) throws Exception {
+	public static boolean delete(String id) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -34,7 +31,7 @@ public class CategoryDAO {
 		return status;
 	}
 
-	public static List<Category> getAllCategories() throws Exception {
+	public static List<Category> getAllCategories() {
 
 		List<Category> categoryRepository = new ArrayList<>();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -54,7 +51,7 @@ public class CategoryDAO {
 		return categoryRepository;
 	}
 
-	public static Category getCategoryById(String id) throws Exception {
+	public static Category getCategoryById(String id) {
 
 		Category category = new Category();
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -72,7 +69,7 @@ public class CategoryDAO {
 		return category;
 	}
 
-	public static boolean save(String name) throws Exception {
+	public static boolean save(String name) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -93,7 +90,7 @@ public class CategoryDAO {
 		return status;
 	}
 
-	public static boolean update(String id, String name) throws Exception {
+	public static boolean update(String id, String name) {
 
 		boolean status = true;
 		SessionFactory factory = HibernateUtils.getSessionFactory();
@@ -105,8 +102,7 @@ public class CategoryDAO {
 		try {
 			session.update(category);
 			transaction.commit();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			// Rollback trong trường hợp có lỗi xẩy ra.
 			session.getTransaction().rollback();
