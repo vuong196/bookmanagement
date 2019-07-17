@@ -4,7 +4,6 @@ package beans;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,34 +11,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.GenericGenerator;
-
 @Entity(name = "beans.Category")
 @Table(name = "category", catalog = "bookmanagement")
 public class Category {
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "_bookCategorySet")
-	private Set<Book>	_categoryBookSet	= new HashSet<>(0);
-	
+	private Set<Book> _categoryBookSet = new HashSet<>(0);
+
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "category_id", length = 36, unique = true, nullable = false)
-	private String	_categoryId;
-	
+	private String _categoryId;
+
 	@Column(name = "category_name", length = 50, nullable = false)
-	private String	_categoryName;
+	private String _categoryName;
 
 	public Category() {
 
-		this.setCategoryId(UUID.randomUUID().toString());
+		_categoryId = UUID.randomUUID().toString();
 	}
 
 	public Category(String categoryName) {
 
-		this.setCategoryId(UUID.randomUUID().toString());
-		this.setCategoryName(categoryName);
+		_categoryId = UUID.randomUUID().toString();
+		_categoryName = categoryName;
 	}
 
 	public Set<Book> getCategoryBookSet() {
