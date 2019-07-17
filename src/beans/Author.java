@@ -16,18 +16,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "author", catalog = "bookmanagement")
 public class Author {
 
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "author_id", length = 36, unique = true, nullable = false)
-	private String _authorId;
-
-	@Column(name = "author_name", length = 50, nullable = false)
-	private String _authorName;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_bookAuthor")
-	private Set<Book> _authorBookSet = new HashSet<>(0);
-
 	public Author() {
 
 		this.setAuthorId(UUID.randomUUID().toString());
@@ -75,4 +63,16 @@ public class Author {
 
 		this._authorBookSet = bookSet;
 	}
+
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Column(name = "author_id", length = 36, unique = true, nullable = false)
+	private String _authorId;
+
+	@Column(name = "author_name", length = 50, nullable = false)
+	private String _authorName;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_bookAuthor")
+	private Set<Book> _authorBookSet = new HashSet<>(0);
 }
