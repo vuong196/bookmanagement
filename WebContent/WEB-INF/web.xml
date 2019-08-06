@@ -2,66 +2,189 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>BookManagement</display-name>
  
+<!--________________________________Book Servlet________________________________ -->
 <!-- Defines the path to access view Servlet --> 
 	<servlet>
-	   <servlet-name>viewServlet</servlet-name>
-	   <servlet-class>ViewServlet</servlet-class>
+	   <servlet-name>viewBookServlet</servlet-name>
+	   <jsp-file>/pages/book/book-view.jsp</jsp-file>
 	</servlet>
 	 
 	<servlet-mapping>
-	   <servlet-name>viewServlet</servlet-name>
+	   <servlet-name>viewBookServlet</servlet-name>
 	   <url-pattern>/book/view</url-pattern>
 	</servlet-mapping>
 
 <!-- Defines the path to access add Servlet --> 
 	<servlet>
-	   <servlet-name>addFormServlet</servlet-name>
-	   <servlet-class>AddFormServlet</servlet-class>
+	   <servlet-name>addBookFormServlet</servlet-name>
+	   <jsp-file>/pages/book/book-add.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-	   <servlet-name>addFormServlet</servlet-name>
+	   <servlet-name>addBookFormServlet</servlet-name>
 	   <url-pattern>/book/add</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-	   <servlet-name>addServlet</servlet-name>
-	   <servlet-class>AddServlet</servlet-class>
+	   <servlet-name>addBookServlet</servlet-name>
+	   <servlet-class>servlets.book.Add</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	   <servlet-name>addServlet</servlet-name>
+	   <servlet-name>addBookServlet</servlet-name>
 	   <url-pattern>/book/AddServlet</url-pattern>
 	</servlet-mapping>
 
 <!-- Defines the path to access edit Servlet --> 	
 	<servlet>
-	   <servlet-name>editFormServlet</servlet-name>
-	   <servlet-class>EditFormServlet</servlet-class>
+	   <servlet-name>editBookFormServlet</servlet-name>
+	   <jsp-file>/pages/book/book-edit.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-	   <servlet-name>editFormServlet</servlet-name>
+	   <servlet-name>editBookFormServlet</servlet-name>
 	   <url-pattern>/book/edit</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-	   <servlet-name>editServlet</servlet-name>
-	   <servlet-class>EditServlet</servlet-class>
+	   <servlet-name>editBookServlet</servlet-name>
+	   <servlet-class>servlets.book.Edit</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	   <servlet-name>editServlet</servlet-name>
+	   <servlet-name>editBookServlet</servlet-name>
 	   <url-pattern>/book/EditServlet</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-	   <servlet-name>deleteServlet</servlet-name>
-	   <servlet-class>DeleteServlet</servlet-class>
+	   <servlet-name>deleteBookServlet</servlet-name>
+	   <servlet-class>servlets.book.Delete</servlet-class>
 	</servlet>
 	<servlet-mapping>
-	   <servlet-name>deleteServlet</servlet-name>
+	   <servlet-name>deleteBookServlet</servlet-name>
 	   <url-pattern>/book/delete</url-pattern>
 	</servlet-mapping>
+
+<!--________________________________Category Servlet________________________________ -->
+<!-- Defines the path to access view Servlet --> 
+	<servlet>
+	   <servlet-name>viewCategoryServlet</servlet-name>
+	   <jsp-file>/pages/category/category-view.jsp</jsp-file>
+	</servlet>
+	 
+	<servlet-mapping>
+	   <servlet-name>viewCategoryServlet</servlet-name>
+	   <url-pattern>/category/view</url-pattern>
+	</servlet-mapping>
+
+<!-- Defines the path to access add Servlet --> 
+	<servlet>
+	   <servlet-name>addCategoryFormServlet</servlet-name>
+	   <jsp-file>/pages/category/category-add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>addCategoryFormServlet</servlet-name>
+	   <url-pattern>/category/add</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>addCategoryServlet</servlet-name>
+	   <servlet-class>servlets.category.Add</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>addCategoryServlet</servlet-name>
+	   <url-pattern>/category/AddServlet</url-pattern>
+	</servlet-mapping>
+
+<!-- Defines the path to access edit Servlet --> 	
+	<servlet>
+	   <servlet-name>editCategoryFormServlet</servlet-name>
+	   <jsp-file>/pages/category/category-edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>editCategoryFormServlet</servlet-name>
+	   <url-pattern>/category/edit</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>editCategoryServlet</servlet-name>
+	   <servlet-class>servlets.category.Edit</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>editCategoryServlet</servlet-name>
+	   <url-pattern>/category/EditServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>deleteCategoryServlet</servlet-name>
+	   <servlet-class>servlets.category.Delete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>deleteCategoryServlet</servlet-name>
+	   <url-pattern>/category/delete</url-pattern>
+	</servlet-mapping>	
 	
+<!--________________________________Author Servlet________________________________ -->
+<!-- Defines the path to access view Servlet --> 
+	<servlet>
+	   <servlet-name>viewAuthorServlet</servlet-name>
+	   <jsp-file>/pages/author/author-view.jsp</jsp-file>
+	</servlet>
+	 
+	<servlet-mapping>
+	   <servlet-name>viewAuthorServlet</servlet-name>
+	   <url-pattern>/author/view</url-pattern>
+	</servlet-mapping>
+
+<!-- Defines the path to access add Servlet --> 
+	<servlet>
+	   <servlet-name>addAuthorFormServlet</servlet-name>
+	   <jsp-file>/pages/author/author-add.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>addAuthorFormServlet</servlet-name>
+	   <url-pattern>/author/add</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>addAuthorServlet</servlet-name>
+	   <servlet-class>servlets.author.Add</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>addAuthorServlet</servlet-name>
+	   <url-pattern>/author/AddServlet</url-pattern>
+	</servlet-mapping>
+
+<!-- Defines the path to access edit Servlet --> 	
+	<servlet>
+	   <servlet-name>editAuthorFormServlet</servlet-name>
+	   <jsp-file>/pages/author/author-edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>editAuthorFormServlet</servlet-name>
+	   <url-pattern>/author/edit</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>editAuthorServlet</servlet-name>
+	   <servlet-class>servlets.author.Edit</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>editAuthorServlet</servlet-name>
+	   <url-pattern>/author/EditServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	   <servlet-name>deleteAuthorServlet</servlet-name>
+	   <servlet-class>servlets.author.Delete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>deleteAuthorServlet</servlet-name>
+	   <url-pattern>/author/delete</url-pattern>
+	</servlet-mapping>	
+		
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
